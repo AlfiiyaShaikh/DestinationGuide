@@ -14,19 +14,19 @@
 ## 📸 Screenshots
 
 ### Login Screen
-![Login](./screenshots/login.png)
+![Login](./DestinationGuide/screenshots/login.png)
 
 ### Registration Screen
-![Registration](./screenshots/registeration.png)
+![Registration](./DestinationGuide/screenshots/registeration.png)
 
 ### Home Page
-![Home](./Screenshots/home.png)
+![Home](./Destination/Screenshots/home.png)
 
 ### Add Destination
-![Add Destination](./screenshots/add_destination.png)
+![Add Destination](./DestinationGuide/screenshots/add_destination.png)
 
 ### Edit Destination
-![Edit Destination](./screenshots/edit.png)
+![Edit Destination](./DestinationGuide/screenshots/edit.png)
 
 ## 🛠️ Tech Stack
 
