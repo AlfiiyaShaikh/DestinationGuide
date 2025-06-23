@@ -20,7 +20,7 @@
 ![Registration](./DestinationGuide/screenshots/registeration.png)
 
 ### Home Page
-![Home](./Destination/Screenshots/home.png)
+![Home](./Destination/screenshots/home.png)
 
 ### Add Destination
 ![Add Destination](./DestinationGuide/screenshots/add_destination.png)
