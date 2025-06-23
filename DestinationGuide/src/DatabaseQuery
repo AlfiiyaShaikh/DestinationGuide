@@ -1,0 +1,66 @@
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(50) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+
+create table destination(id int primary key auto_increment,user_id int references user(id),name varchar(100) not null,location varchar(100) not null,description text,avg_rating int default null,created_at datetime default current_timestamp);
+
+DELIMITER //
+
+CREATE PROCEDURE AddDestination (
+    IN p_user_id INT,
+    IN p_name VARCHAR(100),
+    IN p_location VARCHAR(100),
+    IN p_description TEXT,
+    IN p_rating INT
+)
+BEGIN
+    INSERT INTO destination (user_id, name, location, description, avg_rating)
+    VALUES (p_user_id, p_name, p_location, p_description, p_rating);
+END;
+//
+
+DELIMITER ;
+
+CREATE TABLE destination_history (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    destination_id INT,
+    user_id INT,
+    name VARCHAR(100),
+    location VARCHAR(100),
+    description TEXT,
+    avg_rating INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+DELIMITER //
+
+CREATE TRIGGER before_destination_update
+BEFORE UPDATE ON destination
+FOR EACH ROW
+BEGIN
+    INSERT INTO destination_history (destination_id, user_id, name, location, description, avg_rating)
+    VALUES (OLD.id, OLD.user_id, OLD.name, OLD.location, OLD.description, OLD.avg_rating);
+END;
+//
+
+DELIMITER ;
+
+
+DELIMITER //
+
+CREATE TRIGGER before_destination_delete
+BEFORE DELETE ON destination
+FOR EACH ROW
+BEGIN
+    INSERT INTO destination_history (destination_id, user_id, name, location, description, avg_rating)
+    VALUES (OLD.id, OLD.user_id, OLD.name, OLD.location, OLD.description, OLD.avg_rating);
+END;
+//
+
+DELIMITER ;
+
